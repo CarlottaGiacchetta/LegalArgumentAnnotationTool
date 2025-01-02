@@ -1,4 +1,4 @@
-# README: Legal Argument Annotation Tool
+# Legal Argument Annotation Tool
 
 ## Overview
 
@@ -91,44 +91,7 @@ annotations.call_annotations(name='grouped_file.xml', output_json='categorized_o
   - Uses GPT to assign categories based on the above types.
   - Updates the XML file with `Category` attributes.
 
-## Connection to the Paper
-
-The tool aligns with the multi-stage pipeline described in the paper:
-
-1. **Argument Detection**: Identifies sentences relevant to legal arguments.
-2. **Argument Classification**: Differentiates between premises and conclusions.
-3. **Type and Scheme Classification**: Maps sentences to specific legal premises or argumentative schemes, as outlined in the hierarchical taxonomy of the *Demosthenes* corpus.
-
-### Why This Tool is Valuable
-
-- **Efficiency**: Automates labor-intensive tasks of annotation and categorization.
-- **Scalability**: Adapts to various legal domains and annotation tasks.
+on tasks.
 - **Precision**: Incorporates the robust annotation guidelines and methods validated in the paper.
 
-## File Structure
-
-- **Input Files**: XML files with raw legal text.
-- **Output Files**:
-  - Annotated XML files with `Group` and `Category` attributes.
-  - JSON files summarizing the grouping and categorization.
-
-## Future Work
-
-- Incorporate relationship mapping between arguments.
-- Refine the categorization by splitting overlapping categories like interpretative schemes.
-- Explore fine-tuned language models for enhanced performance.
-
-## Citation
-
-If you use this tool in your research, please cite the accompanying paper:
-
-```
-@inproceedings{grundler2022demosthenes,
-  title={Detecting Arguments in CJEU Decisions on Fiscal State Aid},
-  author={Grundler, Giulia and Santin, Piera and others},
-  booktitle={Proceedings of the 9th Workshop on Argument Mining},
-  pages={143--157},
-  year={2022}
-}
-```
 
