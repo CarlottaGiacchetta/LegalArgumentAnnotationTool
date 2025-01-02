@@ -21,6 +21,8 @@ This tool is inspired by and extends the methodologies discussed in the paper *D
 
 Building on these insights, this tool applies advanced AI models to address these challenges, enabling efficient annotation and classification of legal texts.
 
+Additionally, this pipeline aligns with the theories presented in Philip Bobbitt's *Methods of Constitutional Argument*. Bobbitt's framework identifies six modalities of constitutional reasoning, which form the foundation for categorizing legal arguments in this tool.
+
 ## Installation
 
 1. Clone this repository:
@@ -78,7 +80,9 @@ annotations.call_annotations(name='grouped_file.xml', output_json='categorized_o
 ### Argument Categorization
 
 - **Objective**: Assign legal categories to grouped sentences.
+
 - **Categories**:
+
   - **Historical Arguments**: Based on framers' and ratifiers' intentions.
   - **Textual Arguments**: Focused on literal meanings.
   - **Structural Arguments**: Examining systemic constitutional interactions.
@@ -91,7 +95,11 @@ annotations.call_annotations(name='grouped_file.xml', output_json='categorized_o
   - Uses GPT to assign categories based on the above types.
   - Updates the XML file with `Category` attributes.
 
-on tasks.
-- **Precision**: Incorporates the robust annotation guidelines and methods validated in the paper.
+
+## References
+
+- [Detecting Arguments in CJEU Decisions on Fiscal State Aid](https://aclanthology.org/2022.argmining-1.14/)
+- [Methods of Constitutional Argument by Philip Bobbitt](https://law.utexas.edu/faculty/publications/1989-Methods-of-Constitutional-Argument/)
+
 
 
