@@ -1,1 +1,134 @@
-# ProjectCourse_legal
+# README: Legal Argument Annotation Tool
+
+## Overview
+
+This repository provides a Python-based tool for processing and annotating legal texts in XML format. The tool utilizes OpenAI's GPT model to group sentences based on semantic meaning and categorize them into predefined legal argumentation types. It supports creating structured JSON outputs and updating XML files with these annotations for further analysis.
+
+## Key Features
+
+1. **Semantic Grouping**: Groups sentences based on thematic or semantic connections, ensuring coherence in legal arguments.
+2. **Argument Categorization**: Assigns sentences to categories such as Historical, Textual, Doctrinal, Ethical, etc., based on their argumentative type.
+3. **File Output**: Saves results in both annotated XML and structured JSON formats for integration with other tools or analysis pipelines.
+4. **Automation**: Automates directory management, API interactions, and file handling to streamline the annotation workflow.
+
+## Motivations
+
+This tool is inspired by and extends the methodologies discussed in the paper *Detecting Arguments in CJEU Decisions on Fiscal State Aid*. The paper emphasizes the critical role of argument mining (AM) in the legal domain, where arguments must be systematically identified and categorized. It identifies challenges like:
+
+1. The need for annotated corpora in underexplored legal domains.
+2. The complexity of operationalizing legal argumentation theory for automated systems.
+3. The importance of hierarchical annotation (e.g., identifying premises, conclusions, and schemes).
+
+Building on these insights, this tool applies advanced AI models to address these challenges, enabling efficient annotation and classification of legal texts.
+
+## Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-repo/legal-annotation-tool.git
+   cd legal-annotation-tool
+   ```
+2. Install required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Usage
+
+### 1. Initializing the Class
+
+```python
+from openai import OpenAI
+from add_annotations import AddAnnotations
+
+annotations = AddAnnotations(model_name='gpt-4o-mini', max_tokens=2000, openai_api_key='your-api-key')
+```
+
+### 2. Semantic Grouping
+
+Groups sentences from an XML file based on their thematic connection.
+
+```python
+annotations.call_unifypar_struct(name='input_file.xml', output_json='output.json')
+```
+
+### 3. Argument Categorization
+
+Classifies grouped arguments into predefined categories and updates the XML structure.
+
+```python
+annotations.call_annotations(name='grouped_file.xml', output_json='categorized_output.json')
+```
+
+### Output
+
+- Updated XML files with annotations.
+- Structured JSON outputs summarizing the categorization.
+
+## Methodology
+
+### Semantic Grouping
+
+- **Objective**: Group sentences sharing a common theme.
+- **Implementation**:
+  - Extracts sentences and their metadata from the XML structure.
+  - Sends sentences to OpenAI's GPT model for semantic grouping.
+  - Integrates grouped information into the XML structure.
+
+### Argument Categorization
+
+- **Objective**: Assign legal categories to grouped sentences.
+- **Categories**:
+  - **Historical Arguments**: Based on framers' and ratifiers' intentions.
+  - **Textual Arguments**: Focused on literal meanings.
+  - **Structural Arguments**: Examining systemic constitutional interactions.
+  - **Prudential Arguments**: Evaluating practical outcomes.
+  - **Doctrinal Arguments**: Grounded in legal precedents.
+  - **Ethical Arguments**: Based on societal values and morals.
+
+- **Implementation**:
+  - Aggregates sentences by group.
+  - Uses GPT to assign categories based on the above types.
+  - Updates the XML file with `Category` attributes.
+
+## Connection to the Paper
+
+The tool aligns with the multi-stage pipeline described in the paper:
+
+1. **Argument Detection**: Identifies sentences relevant to legal arguments.
+2. **Argument Classification**: Differentiates between premises and conclusions.
+3. **Type and Scheme Classification**: Maps sentences to specific legal premises or argumentative schemes, as outlined in the hierarchical taxonomy of the *Demosthenes* corpus.
+
+### Why This Tool is Valuable
+
+- **Efficiency**: Automates labor-intensive tasks of annotation and categorization.
+- **Scalability**: Adapts to various legal domains and annotation tasks.
+- **Precision**: Incorporates the robust annotation guidelines and methods validated in the paper.
+
+## File Structure
+
+- **Input Files**: XML files with raw legal text.
+- **Output Files**:
+  - Annotated XML files with `Group` and `Category` attributes.
+  - JSON files summarizing the grouping and categorization.
+
+## Future Work
+
+- Incorporate relationship mapping between arguments.
+- Refine the categorization by splitting overlapping categories like interpretative schemes.
+- Explore fine-tuned language models for enhanced performance.
+
+## Citation
+
+If you use this tool in your research, please cite the accompanying paper:
+
+```
+@inproceedings{grundler2022demosthenes,
+  title={Detecting Arguments in CJEU Decisions on Fiscal State Aid},
+  author={Grundler, Giulia and Santin, Piera and others},
+  booktitle={Proceedings of the 9th Workshop on Argument Mining},
+  pages={143--157},
+  year={2022}
+}
+```
+
