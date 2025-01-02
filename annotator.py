@@ -108,7 +108,7 @@ class AddAnnotations:
         risposta = self.client.chat.completions.create(
             model=self.model_name,
             messages=messaggi,
-            temperature=0.7
+            temperature=0.2
         )
         contenuto_risposta = risposta.choices[0].message.content.strip()
 
@@ -267,7 +267,7 @@ class AddAnnotations:
             risposta = self.client.chat.completions.create(
                 model= self.model_name,
                 messages=messaggi,
-                temperature=0.7
+                temperature=0.2
             )
             response_content = risposta.choices[0].message.content.strip()
             

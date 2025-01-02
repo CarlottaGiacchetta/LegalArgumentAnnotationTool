@@ -64,8 +64,8 @@ annotations.call_annotations(name='grouped_file.xml', output_json='categorized_o
 
 ### Output
 
-- Updated XML files with annotations.
-- Structured JSON outputs summarizing the categorization.
+- Updated XML files with annotations in `demosthenes_dataset_group` and `demosthenes_dataset_annotated`.
+- Structured JSON files explaining grouping and categorization saved in `output_json_group` and `output_json_annotation`.
 
 ## Methodology
 
